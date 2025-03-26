@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Video Monitoring</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-4">
+        <h2 class="text-center">Admin Video Monitoring</h2>
+        <p id="status" class="text-center text-primary">Waiting for user...</p>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <video id="remote-video" class="w-100 border rounded" autoplay playsinline></video>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>

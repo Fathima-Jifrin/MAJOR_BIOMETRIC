@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voter Login - Election Commission of India</title>
+    <link rel="stylesheet" href="styles.css"> 
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            line-height: 1.6;
+        }
+
+        header {
+          background-color: darkblue;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .logo img {
+            width: 60px;
+            display: block;
+            margin: 0 auto 10px auto;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .btn-primary {
+            background-color: #040d8d;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .btn-primary:hover {
+            background-color:#e68928;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        p {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        a {
+            color: #1e078f;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="Election Commission of India Logo"> 
+        </div>
+        <h1>Election Commission of India</h1>
+    </header>
+
+    <div class="container">
+        <form action="authenticate.php" method="POST" class="login-form"> 
+            <h2>Voter Login</h2>
+            <label for="aadhaar">Aadhaar Number:</label>
+            <input type="text" id="aadhaar" name="aadhaar" required placeholder="Enter your Aadhaar Number" pattern="\d{12}" title="Aadhaar number must be 12 digits.">
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required placeholder="Enter your Password">
+
+            <button type="submit" class="btn-primary">Login</button>
+        </form>
+        <p>Not registered? <a href="reg.php">Register here</a>.</p>
+        <p>Forgot your password? <a href="forgot_password.php">Reset Password</a>.</p>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Election Commission of India. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Video Stream</title>
+</head>
+<body>
+    <h2>Start Video Stream</h2>
+    <label>User ID: <input type="text" id="user_id"></label>
+    <button onclick="startBroadcast()">Start Broadcast</button>
+    <video id="video" autoplay playsinline></video>
+
+    <script>
+        let peerConnection = new RTCPeerConnection();
+        let videoElement = document.getElementById("video");
+        let userIdInput = document.getElementById("user_id");
+
+        function startBroadcast() {
+            let userId = userIdInput.value;
+            if (!userId) return alert("Enter a User ID!");
+
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(stream => {
+                    videoElement.srcObject = stream;
+                    stream.getTracks().forEach(track => peerConnection.addTrack(track, stream));
+                    return peerConnection.createOffer();
+                })
+                .then(offer => {
+                    peerConnection.setLocalDescription(offer);
+                    return fetch("signaling.php?user_id=" + userId, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ offer })
+                    });
+                })
+                .catch(error => console.error("Error:", error));
+        }
+    </script>
+</body>
+</html>
